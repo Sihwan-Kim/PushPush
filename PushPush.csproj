@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Back.png" />
+    <None Remove="Resources\Back1.png" />
+    <None Remove="Resources\box.png" />
+    <None Remove="Resources\brick.png" />
+    <None Remove="Resources\Empty.png" />
+    <None Remove="Resources\front.png" />
+    <None Remove="Resources\inbox.png" />
+    <None Remove="Resources\left.png" />
+    <None Remove="Resources\right.png" />
+    <None Remove="Resources\target.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Back.png" />
+    <Resource Include="Resources\Back1.png" />
+    <Resource Include="Resources\box.png" />
+    <Resource Include="Resources\brick.png" />
+    <Resource Include="Resources\Empty.png" />
+    <Resource Include="Resources\front.png" />
+    <Resource Include="Resources\inbox.png" />
+    <Resource Include="Resources\left.png" />
+    <Resource Include="Resources\right.png" />
+    <Resource Include="Resources\target.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

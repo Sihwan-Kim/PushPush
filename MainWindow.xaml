@@ -1,0 +1,44 @@
+﻿<Window x:Class="PushPush.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PushPush"
+        mc:Ignorable="d"
+        Title="Push Push" Height="450" Width="616" SizeChanged="Window_SizeChanged">
+    <Grid>
+        <DockPanel LastChildFill="False">
+            <Border DockPanel.Dock="Top" BorderThickness="50" Height="55">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}"/>
+                </Border.BorderBrush>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Push Push Game" FontSize="25" Height="30" Width="500" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-39,0,0" FontWeight="Bold"/>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" Width="210">
+                <StackPanel>
+                    <TextBlock x:Name="textStage" TextWrapping="Wrap" Text="Stage :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                    <TextBlock TextWrapping="Wrap" Text="Present Score" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Height="89" Width="185">
+                        <StackPanel Margin="0,0,0,-1">
+                            <TextBlock x:Name="textPresentStep" TextWrapping="Wrap" Text="Steps :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                            <TextBlock x:Name="textPresentTime" TextWrapping="Wrap" Text=" Time :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBlock TextWrapping="Wrap" Text="High Score" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Height="89" Width="185">
+                        <StackPanel Margin="0,0,0,-1">
+                            <TextBlock x:Name="textHighStep" TextWrapping="Wrap" Text="Steps :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                            <TextBlock x:Name="textHighTime" TextWrapping="Wrap" Text=" Time :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Button Content="Back" Height="30" Width="80" Margin="0,10,0,0"/>
+                    <Button Content="Button" Height="30" Width="80" Margin="0,10,0,0"/>                    
+                </StackPanel>
+            </Border>
+            <Border x:Name="borderGround" BorderBrush="Black" BorderThickness="1" Width="376" >
+                <Grid x:Name="panelGameFiled" Width="10" Height="10"/>
+            </Border>
+            <StatusBar/>
+        </DockPanel>
+    </Grid>    
+</Window>
