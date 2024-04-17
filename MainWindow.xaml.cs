@@ -17,6 +17,11 @@ namespace PushPush
                                            "./Resources/inbox.png",
                                            "./Resources/brick.png"};
 
+        private readonly string[] worker = {"./Resources/back.png",
+                                            "./Resources/front.png",
+                                            "./Resources/left.png",
+                                            "./Resources/right.png"};
+
         private int StageNum = 1;
         private readonly string stageFolder;
         private GamePlay gamePlay;
@@ -24,8 +29,8 @@ namespace PushPush
         public MainWindow()
         {
             InitializeComponent();
-            stageFolder = System.Environment.CurrentDirectory + "stage\\";  // 게임스테이지가 들어있는 폴더 설정 
-            makePlayGround(5, 5);
+            stageFolder = System.Environment.CurrentDirectory + "\\stage\\";  // 게임스테이지가 들어있는 폴더 설정 
+            makePlayGround(10, 10);
 
             gamePlay = new GamePlay();
 
@@ -59,18 +64,20 @@ namespace PushPush
                 for(int x = 0 ; x < panelGameFiled.ColumnDefinitions.Count  ; x++)
                 {
                     Uri resourceUri = new Uri(icons[gamePlay.field.fieldArray[x, y]], UriKind.Relative);
-
-                    Image image = (Image)panelGameFiled.Children[index ++];
-                    image.Source = new BitmapImage(resourceUri);                    
+                    ((Image)panelGameFiled.Children[index ++]).Source = new BitmapImage(resourceUri);                    
                 }
             }
+
+            Uri workerUri = new Uri(worker[1], UriKind.Relative);
+            index = (gamePlay.field.worker.Position.Y * panelGameFiled.ColumnDefinitions.Count) + gamePlay.field.worker.Position.X;
+            ((Image)panelGameFiled.Children[index]).Source = new BitmapImage(workerUri);  
 
  //           ((PictureBox)panelGameFiled.GetControlFromPosition(gamePlay.field.worker.Position.X, gamePlay.field.worker.Position.Y)!).Image = Properties.Resources.down;
 
             textStage.Text = string.Format("Stage : Level-{0}", StageNum);
             textPresentStep.Text = "Steps : 0";
 
-//            gamePlay.loadHighScore(labelLevel.Text);        // 현재 스테이지의 최고 점수를 불러와서 화면에 보여준다.
+            gamePlay.loadHighScore(textStage.Text);        // 현재 스테이지의 최고 점수를 불러와서 화면에 보여준다.
             textHighStep.Text = gamePlay.HighSteps.ToString("Steps : 0");
             textHighTime.Text = string.Format("Time : {0:D2}:{1:D2}", gamePlay.HighTimes / 60, gamePlay.HighTimes % 60);  
         }
@@ -89,7 +96,7 @@ namespace PushPush
             {
                 for(int col = 0 ; col < ColCount ; col++)
                 {
-                    Uri resourceUri = new Uri("./Resources/Box.png", UriKind.Relative);
+                    Uri resourceUri = new Uri("./Resources/empty.png", UriKind.Relative);
 
                     Image image = new Image()  { Source = new BitmapImage(resourceUri)} ;
                     Grid.SetColumn(image, col);
