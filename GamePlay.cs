@@ -57,7 +57,7 @@ namespace PushPush
         private void timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
         {
             Times++;            
-            ReturnToTime!(string.Format("{0:D2}:{1:D2}", Times / 60, Times % 60));
+            ReturnToTime!(string.Format("Time : {0:D2}:{1:D2}", Times / 60, Times % 60));
         }
         //----------------------------------------------------------------------------------------
         public void Start()

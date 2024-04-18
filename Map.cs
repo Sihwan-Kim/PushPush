@@ -2,6 +2,7 @@
 using System.Reflection.Metadata.Ecma335;
 using System.Drawing;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace PushPush
 {
@@ -15,20 +16,27 @@ namespace PushPush
 
         }
         //----------------------------------------------------------------------------------------
-        public bool loadStage(string StageFile)
+        public bool loadStage(string StageFile, out int ColCount, out int RowCount)
         {
             bool reuslt = true;
+            ColCount = 0; RowCount = 0;
 
             try
             {
                 using(StreamReader sr = new StreamReader(StageFile))
                 {
-                    string? position = sr.ReadLine();
-                    string[] pos = position!.Split(',');
-                    int index = 0;
+                    string[] count = sr.ReadLine()!.Split(',');
+                    string[] position = sr.ReadLine()!.Split(',');
 
-                    worker.Position.X = int.Parse(pos[0]);   // 작업자의 X 위치
-                    worker.Position.Y = int.Parse(pos[1]);   // 작업자의 Y 위치
+                    worker.Position.X = int.Parse(position[0]);   // 작업자의 X 위치
+                    worker.Position.Y = int.Parse(position[1]);   // 작업자의 Y 위치
+
+                    ColCount = int.Parse(count[0]);
+                    RowCount = int.Parse(count[1]);
+
+                    fieldArray = (int[,])ResizeArray(fieldArray, new int[] {ColCount, RowCount}) ;
+
+                    int index = 0;
 
                     while(!sr.EndOfStream)
                     {
@@ -57,6 +65,20 @@ namespace PushPush
             return reuslt;
         }
         //----------------------------------------------------------------------------------------
+        private static Array ResizeArray(Array arr, int[] newSizes)
+        {
+            if(newSizes.Length != arr.Rank)
+            {
+                throw new ArgumentException("arr must have the same number of dimensions " +
+                                            "as there are elements in newSizes", "newSizes");
+            }
+
+            var temp = Array.CreateInstance(arr.GetType().GetElementType(), newSizes);
+            int length = arr.Length <= temp.Length ? arr.Length : temp.Length;
+            Array.ConstrainedCopy(arr, 0, temp, 0, length);
+
+            return temp;
+        }
     }
     /*********************************************************************************************/
     internal class Worker
