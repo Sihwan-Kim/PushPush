@@ -177,7 +177,13 @@ namespace PushPush
                 case Key.Down: result = WorkerMove(Direction.BOTTOM); break;
                 case Key.Left: result = WorkerMove(Direction.LEFT); break;
                 case Key.Right: result = WorkerMove(Direction.RIGHT); break;
+                case Key.U:
+                    gamePlay.Undo();
+                    FieldUpdate(gamePlay.field.worker.Position, true);
+                    break;
+                case Key.R: gameStart(); break;
             }
+
 
             if(result == MessageBoxResult.Yes) gameStart();  // 다음 스테이지의 게임 계속 진행 
         }
@@ -224,7 +230,7 @@ namespace PushPush
         //----------------------------------------------------------------------------------------
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-//            StageNum = 1;
+            StageNum = 1;
             gameStart();
         }
         //----------------------------------------------------------------------------------------

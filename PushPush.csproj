@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Resource Include="Resources\Back.png" />
-    <Resource Include="Resources\Back1.png" />
     <Resource Include="Resources\box.png" />
     <Resource Include="Resources\brick.png" />
     <Resource Include="Resources\Empty.png" />

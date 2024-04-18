@@ -149,15 +149,5 @@ namespace PushPush.Properties {
                 return ((byte[])(obj));
             }
         }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static byte[] top {
-            get {
-                object obj = ResourceManager.GetObject("top", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
