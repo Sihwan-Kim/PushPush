@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using CommunityToolkit.Mvvm.ComponentModel;
+using System.ComponentModel;
+using System.Reflection.Metadata;
 
 namespace PushPush
 {
-    internal class GamePlay
+    internal class GamePlay : INotifyPropertyChanged 
     {
         public delegate void UpdateTimeInform(string time);
         public event UpdateTimeInform? ReturnToTime;
@@ -209,5 +212,18 @@ namespace PushPush
             return result;
         }
         //----------------------------------------------------------------------------------------
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+
+            if(handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
     }
 }

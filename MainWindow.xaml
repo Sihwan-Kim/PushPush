@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PushPush"
+        xmlns:local="clr-namespace:PushPush" xmlns:model="clr-namespace:PushPush.Model" d:DataContext="{d:DesignInstance Type=model:GameInformation}"        
         mc:Ignorable="d"
         Title="Push Push" Height="480" Width="616" SizeChanged="Window_SizeChanged" PreviewKeyDown="Window_PreviewKeyDown" Closing="Window_Closing">
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Text="Move : Arrow key, Undo : U Key, Replay : R Key" />                
+                <TextBlock Text="Move : Arrow key, Undo : U Key, Replay : R Key" />
             </StatusBarItem>
         </StatusBar>
         <Grid>
@@ -22,7 +22,7 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Width="210">
                     <StackPanel>
-                        <TextBlock x:Name="textStage" TextWrapping="Wrap" Text="Stage :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding Path = gameInformation.StageNumber, UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold" Margin="10,10,0,0" Width="180"/>
                         <TextBlock TextWrapping="Wrap" Text="Present Score" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
                         <Border BorderBrush="Black" BorderThickness="1" Height="89" Width="185">
                             <StackPanel Margin="0,0,0,-1">

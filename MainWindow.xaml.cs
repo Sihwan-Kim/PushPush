@@ -8,6 +8,7 @@ using System.Windows.Threading;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Reflection;
+using PushPush.Model;
 
 namespace PushPush
 {
@@ -30,11 +31,14 @@ namespace PushPush
         private int StageNum = 1;
         private readonly string stageFolder;
         private GamePlay gamePlay;
+        private GameInformation gameInformation;
 
         public MainWindow()
         {
             InitializeComponent();
             stageFolder = System.Environment.CurrentDirectory + "\\stage\\";  // 게임스테이지가 들어있는 폴더 설정 
+
+            gameInformation = new GameInformation();
 
             gamePlay = new GamePlay();
             gamePlay.ReturnToTime += new GamePlay.UpdateTimeInform(UpdateTime);
@@ -82,10 +86,11 @@ namespace PushPush
             index = (gamePlay.field.worker.Position.Y * panelGameFiled.ColumnDefinitions.Count) + gamePlay.field.worker.Position.X;
             ((Image)panelGameFiled.Children[index]).Source = new BitmapImage(workerUri);  
 
-            textStage.Text = string.Format("Stage : Level-{0}", StageNum);
+            //textStage.Text = string.Format("Stage : Level-{0}", StageNum);
+            gameInformation.StageNumber = string.Format("Stage : Level-{0}", StageNum); 
             textPresentStep.Text = "Steps : 0";
 
-            gamePlay.loadHighScore(textStage.Text);        // 현재 스테이지의 최고 점수를 불러와서 화면에 보여준다.
+            gamePlay.loadHighScore(gameInformation.StageNumber);        // 현재 스테이지의 최고 점수를 불러와서 화면에 보여준다.
             textHighStep.Text = gamePlay.HighSteps.ToString("Steps : 0");
             textHighTime.Text = string.Format("Time : {0:D2}:{1:D2}", gamePlay.HighTimes / 60, gamePlay.HighTimes % 60);  
         }
@@ -158,7 +163,7 @@ namespace PushPush
             if(gamePlay.CheckStageClear())  // 게임이 완료 되었다.
             {
                 gamePlay.Stop();
-                gamePlay.saveHighScore(textStage.Text);
+                gamePlay.saveHighScore(gameInformation.StageNumber);
                 result = MessageBox.Show("This Stage Cleared, Play the next stage?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if(result == MessageBoxResult.Yes) StageNum++;  // 다음 스테이지로 넘어간다.                 
