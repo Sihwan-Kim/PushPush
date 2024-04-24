@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PushPush" xmlns:model="clr-namespace:PushPush.Model" d:DataContext="{d:DesignInstance Type=model:GameInformation}"        
         mc:Ignorable="d"
-        Title="Push Push" Height="480" Width="616" SizeChanged="Window_SizeChanged" PreviewKeyDown="Window_PreviewKeyDown" Closing="Window_Closing">
+        Title="Push Push" Height="480" Width="616">
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
@@ -18,11 +18,11 @@
                     <Border.BorderBrush>
                         <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}"/>
                     </Border.BorderBrush>
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Push Push Game" FontSize="25" Height="30" Width="500" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-39,0,0" FontWeight="Bold"/>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="{Binding Title}" FontSize="25" Height="30" Width="500" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-39,0,0" FontWeight="Bold"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Width="210">
                     <StackPanel>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding Path = gameInformation.StageNumber, UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold" Margin="10,10,0,0" Width="180"/>
+                        <TextBlock TextWrapping="Wrap" Text="Level :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0" Width="180"/>
                         <TextBlock TextWrapping="Wrap" Text="Present Score" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
                         <Border BorderBrush="Black" BorderThickness="1" Height="89" Width="185">
                             <StackPanel Margin="0,0,0,-1">
@@ -37,8 +37,8 @@
                                 <TextBlock x:Name="textHighTime" TextWrapping="Wrap" Text=" Time :" FontSize="15" FontWeight="Bold" Margin="10,10,0,0"/>
                             </StackPanel>
                         </Border>
-                        <Button x:Name="btnUndo" Content="Undo" Height="30" Width="80" Margin="0,10,0,0" Click="btnUndo_Click"/>
-                        <Button x:Name="btnReset" Content="Reset" Height="30" Width="80" Margin="0,10,0,0" Click="btnReset_Click"/>
+                        <Button x:Name="btnUndo" Content="Undo" Height="30" Width="80" Margin="0,10,0,0"/>
+                        <Button x:Name="btnReset" Content="Reset" Height="30" Width="80" Margin="0,10,0,0"/>
                     </StackPanel>
                 </Border>
                 <Border x:Name="borderGround" BorderThickness="1" Width="376" Background="Black">

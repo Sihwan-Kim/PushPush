@@ -3,46 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel ;
 
 namespace PushPush.Model
 {
     public class GameInformation : ObservableObject
     {
-        private string? stageNumber;     // 현재 진행중인 Stage 번호
-        private int presentSteps;       // 현재 진행중인 게임의 이동 횟수 
-        private int presentTime;        // 현재 진행중인 게임의 진행 시간 
-        private int highSteps;          // 현재 진행중인 stage의 최고기록 이동 횟수     
-        private int highTime;           // 현재 진행중인 stage의 최고기록 시간     
+        private string? stageNumber;        // 현재 진행중인 Stage 번호
+        private int presentSteps;           // 현재 진행중인 게임의 이동 횟수 
+        private int presentTime;            // 현재 진행중인 게임의 진행 시간 
+        private int highSteps;              // 현재 진행중인 stage의 최고기록 이동 횟수     
+        private int highTime;               // 현재 진행중인 stage의 최고기록 시간     
 
         public int HighTime
         {
-            get { return highTime; }
-            set { SetProperty(ref highTime, value); }
+            get => highTime; 
+            set => SetProperty(ref highTime, value); 
         }
 
         public int HighSteps
         {
-            get { return highSteps; }
-            set { SetProperty(ref highSteps, value);}
+            get => highSteps;
+            set => SetProperty(ref highSteps, value);
         }
 
         public int PresentTime
         {
-            get { return presentTime; }
-            set { SetProperty(ref presentTime, value);}
+            get => presentTime; 
+            set => SetProperty(ref presentTime, value);
         }
 
         public int PresentSteps
         {
-            get { return presentSteps; }
-            set { SetProperty(ref presentSteps, value);}
+            get => presentSteps; 
+            set => SetProperty(ref presentSteps, value);
         }
 
-        public string StageNumber
+        public string? StageNumber
         {
-            get { return stageNumber!; }
-            set { SetProperty(ref stageNumber, value);}
+            get => stageNumber; 
+            set => SetProperty(ref stageNumber, value);
         }
     }
 }
